@@ -1,0 +1,57 @@
+<!-- <p>booking works!</p> -->
+
+
+<div class="bootstrap-wrapper">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center">Booking Form</h1>
+                <img src="../../../assets/login1.png" style="height: 75px; width: 75px;"/>
+                <br>{{customer|json}}
+
+                <form (ngSubmit)="bookingFormSubmit()">
+
+                    <!--Count of People-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Count of People</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.countPeople"
+                        name="countPeople"
+                        matInput type="number" placeholder="Enter the count of people">
+                    </mat-form-field>
+                    <br><br>
+
+                    <!--Room Type-->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Room type</mat-label>
+                        <mat-select required
+                        [(ngModel)]="customer.room_type"
+                        name="room_type">
+                          <mat-option value="AC"> AC </mat-option>
+                          <mat-option value="Deluxe">Deluxe</mat-option>
+                          <mat-option value="Executive">Executive</mat-option>
+                          <mat-option value="Professional">Professional</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    <br><br>
+
+                    <!--Check-in Date-->
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <input required [(ngModel)]="customer.checkin" name="checkin" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>                      
+
+                    <!--Submit-->                  
+                    <div class="button-row">
+                    <button mat-raised-button color="primary">Submit</button>
+                    <button style="left: 2%;" mat-flat-button color="accent">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

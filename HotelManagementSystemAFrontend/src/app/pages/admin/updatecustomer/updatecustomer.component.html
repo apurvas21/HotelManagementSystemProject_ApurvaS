@@ -1,0 +1,162 @@
+<!-- <p>updatecustomer works!</p> -->
+
+<div class="bootstrap-wrapper">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center">Update Customer Details</h1>
+                <img src="../../../assets/login1.png" style="height: 75px; width: 75px;"/>
+                <!-- <br>{{customer|json}} -->
+
+                <form (ngSubmit)="formUpdate()">
+                    <!--UserName-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>User Name</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.username"
+                        name="username"
+                        matInput type="text" placeholder="Enter here">
+                        <mat-hint>Username must be unique!!</mat-hint>
+                    </mat-form-field>
+                   <br><br> 
+                    
+                    <!--Password-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.password"
+                        name="password"
+                        matInput type="password" placeholder="Enter Password" pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$">
+                        <mat-error>Password must be a combination of lower-case, upper-case, numbers and at least 8 characters long</mat-error>
+                        <mat-hint>Password must be same as used at the time of signup!!</mat-hint>
+                    </mat-form-field>
+                    <br><br>
+
+                    <!--First Name-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.firstname"
+                        name="firstname"
+                        matInput type="text" placeholder="Enter first name" pattern="^(?=.*[A-Za-z]).{1,50}$">
+                        <mat-error>First Name can consist of only alphabets.</mat-error>
+                    </mat-form-field>
+                    <br><br>
+
+                    <!--Last Name-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.lastname"
+                        name="lastname"
+                        matInput type="text" placeholder="Enter last name" pattern="^(?=.*[A-Za-z]).{1,50}$">
+                        <mat-error>Last Name can consist of only alphabets.</mat-error>
+                    </mat-form-field>
+                    <br><br>
+
+                    <!--Phone No-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phone No</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.phoneno"
+                        name="phoneno"
+                        matInput type="number" placeholder="Enter phone number" pattern="^(?=.*[0-9]).{9,10}$">
+                        <mat-error>Phone number must be of 10 digit only.</mat-error>
+                        <mat-hint>Enter a valid phone number!!</mat-hint>
+                    </mat-form-field>
+                    <br><br>
+
+                    <!--Email-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input 
+                        required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        [(ngModel)]="customer.email"
+                        name="email"
+                        matInput type="email" placeholder="Enter email" email="true">
+                        <mat-error>Email must be in valid email format consisting of lowercase alphabets, numbers (eg.: abc@gmail.com)</mat-error>
+                        <mat-hint>Enter a valid email!!</mat-hint>
+                    </mat-form-field>
+                    <br><br>
+
+                    <!--Address-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Address</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.address"
+                        name="address"
+                        matInput type="text" placeholder="Enter address" pattern="^(?=.*[A-Z0-9a-z]).{0,500}$">
+                        <mat-error>Address must be under 500 characters!</mat-error>
+                    </mat-form-field>
+                    <br><br>
+
+                    <!--City-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.city"
+                        name="city"
+                        matInput type="text" placeholder="Enter city">
+                    </mat-form-field>
+                    <br><br>
+
+                    <!--Count of People-->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Count of People</mat-label>
+                        <input 
+                        required
+                        [(ngModel)]="customer.countPeople"
+                        name="countPeople"
+                        matInput type="number" placeholder="Enter the count of people">
+                    </mat-form-field>
+                    <br><br>
+
+
+                    <!-- Room Type -->
+                      <mat-form-field preference = "outline">
+                        <mat-label>Room Type</mat-label>
+                        <select matNativeControl required [(ngModel)]="customer.roomType" name ="roomType"> <!--(change)="updateRoomPrice()"-->
+                          <option value="AC Room">AC Room</option>
+                          <option value="Deluxe Room">Deluxe Room</option>
+                          <option value="Executive">Executive</option>
+                          <option value="Professional Suite">Professional Suite</option>
+                        </select>
+                      </mat-form-field>
+                    <br><br>
+
+                    <!--Check-in Date-->
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <input required [(ngModel)]="customer.checkin" name="checkin" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>   
+                    <br><br>
+
+                     <!--Check-out Date-->
+                     <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <input required [(ngModel)]="customer.checkout" name="checkout" matInput [matDatepicker]="picker1">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>   
+
+                    <div class="button-row">
+                    <!-- <button (click)="updateCustomerDetails()" class="btn btn-info">Update</button> -->
+                    <button mat-raised-button color="primary">Submit</button>
+                    <button style="left: 2%;" mat-flat-button color="accent">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
